@@ -25,28 +25,32 @@
       text-decoration: none;
       margin-top: 20px;
     }
+    .tip {
+      margin-top: 25px;
+      font-size: 16px;
+      color: #ccc;
+      max-width: 90%;
+    }
   </style>
 </head>
 <body>
   <h2>Нажмите кнопку, чтобы открыть Telegram</h2>
-  <a class="button" id="tgButton">Перейти в Telegram</a>
+  <a class="button" id="tgButton">Открыть Telegram</a>
+  <div class="tip">
+    Если ничего не происходит, нажмите ⋮ или "..." вверху и выберите "Открыть в браузере"
+  </div>
 
   <script>
-    const url = "https://t.me/+Sn-SVe7syMZmNDli";
+    const tgUrl = "https://t.me/+Sn-SVe7syMZmNDli";
 
     document.getElementById("tgButton").addEventListener("click", () => {
-      // Создаём ссылку и кликаем её для открытия во внешнем браузере
-      const a = document.createElement("a");
-      a.href = url;
-      a.target = "_blank";
-      a.rel = "noopener noreferrer";
-      document.body.appendChild(a);
-      a.click();
+      // Открытие в новом окне (попытка запустить внешний браузер)
+      window.open(tgUrl, "_blank");
 
-      // fallback: если TikTok заблокировал .click(), то пытаемся напрямую
+      // Резервный переход через основное окно
       setTimeout(() => {
-        window.location.href = url;
-      }, 800);
+        window.location.href = tgUrl;
+      }, 1000);
     });
   </script>
 </body>
